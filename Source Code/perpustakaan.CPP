@@ -5,7 +5,7 @@ main(){
 		cout<<"======================================================================================================================="<<endl;
    	cout<<"					Selamat Datang"<<endl;
    	cout<<"========================================================================================================================"<<endl;
-   	cout<<"Nama Aplikasi	:Perpustakaan Maju Jaya"<<endl;
+   	cout<<"Nama Aplikasi	:Perpustakaan"<<endl;
    	cout<<"Pengembang	:Rafli Aditya"<<endl;
    	cout<<"Tools		:Borland C++"<<endl;
    	cout<<"Login(y/t)	:";cin>>login;
