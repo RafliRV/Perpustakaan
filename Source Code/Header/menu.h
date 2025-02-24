@@ -14,7 +14,7 @@ menu(){
    	switch(pilihan){
    		case 1:
       		tambahdata();
-            goto akhir;
+            goto daftar_menu;
          	break;
       	case 2:
       		hapusdata();
@@ -26,11 +26,5 @@ menu(){
    				goto daftar_menu;
          	}
    	}
-      akhir:
-      	cout<<"\nKembali Ke Daftar Menu:";cin>>lagi;
-      	if(lagi=='y' || lagi=='Y'){
-         	goto daftar_menu;
-         }
-
 }
 

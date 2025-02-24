@@ -1,41 +1,33 @@
 #include "Header/hapus.h"
-tambahdata(){
-	int i;
-	Nama.open("Data_Perpustakaan/data_nama.txt",ios::out);
-   Judul.open("Data_Perpustakaan/data_judul_buku.txt",ios::out);
-   Jumlah.open("Data_Perpustakaan/data_jumlah_buku.txt",ios::out);
-   Total.open("Data_Perpustakaan/data_total_harga.txt",ios::out);
-   Data.open("Data_Perpustakaan/jumlah_data.txt",ios::out);
-	char NAMA[25],JUDUL[25];
-   int JUMLAH,TOTAL,lama,total_diskon;double diskon;
-   cout<<"Masukkan Nama	:";gets(NAMA);
-   cout<<"Judul Buku	:";gets(JUDUL);
-   cout<<"Jumlah Buku	:";cin>>JUMLAH;
+void tambahdata(){
+	char nama[25],judul_buku[25];
+   int jumlah_buku,total,lama,total_diskon;double diskon;
+	Database.open("Data_Perpustakaan/Database.dat",ios::out);
+   Data.open("Data_Perpustakaan/Jumlah_Data.txt",ios::out);
+   cout<<"Masukkan Nama	:";gets(nama);
+   cout<<"Judul Buku	:";gets(judul_buku);
+   cout<<"Jumlah Buku	:";cin>>jumlah_buku;
    cout<<"Lama Pinjam(hari):";cin>>lama;
-   if(JUMLAH>5){
-   	diskon=0.1;
+   if(jumlah_buku>5 && lama>7){
+   	diskon=0.2;
    }else if(lama>7){
    	diskon=0.1;
-   }else if(JUMLAH>5 && lama>7){
-   	diskon=0.2;
-   }total_diskon=diskon*JUMLAH*lama*1000;
-   TOTAL=JUMLAH*lama*1000-total_diskon;
+   }else if(jumlah_buku>5){
+   	diskon=0.1;
+   }else{
+   	diskon=0;
+   }total_diskon=diskon*jumlah_buku*lama*1000;                                          
+   total=jumlah_buku*lama*1000-total_diskon;
    cout<<"Diskon Yang Diperoleh	:"<<total_diskon;
-   cout<<"\nTotal Biaya Peminjaman	:"<<TOTAL;
-   for(i=1;i<=n;i++){
-   	Nama<<endl<<data.nama[i];
-      Judul<<endl<<data.judul_buku[i];
-      Jumlah<<endl<<data.jumlah_buku[i];
-      Total<<endl<<data.total[i];
-	}Nama<<NAMA;
-   Judul<<JUDUL;
-   Jumlah<<JUMLAH;
-   Total<<TOTAL;
+   cout<<"\nTotal Biaya Peminjaman	:"<<total;
+   for(i=1;i<=jumlah_data;i++){
+   	Database<<data[i]<<endl;
+	}Database<<nama<<"\t"<<judul_buku<<"\t";
+   if(strlen(judul_buku)<7){
+		Database<<"\t";
+   }Database<<jumlah_buku<<"\t"<<total;
    jumlah_data+=1;
    Data<<jumlah_data;
-   Nama.close();
-   Judul.close();
-   Jumlah.close();
-   Total.close();
    Data.close();
+   Database.close();
 }
